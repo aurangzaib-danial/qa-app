@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container custom-container justify-content-start">
+      <button class="navbar-toggler me-3 order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <%= link_to "QA", root_path, class: "navbar-brand order-2" %>
+
+      <ul class="navbar-nav ms-auto order-3 main-nav-links">
+        <li class="nav-item"><%= link_to "Log in", "/", class: "btn btn-primary" %></li>
+      </ul>
+
+      <div class="collapse navbar-collapse order-4 mt-3" id="navbarSupportedContent">
+        <form class="flex-grow-1">
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <%= search_field_tag :title, nil, class: "form-control", placeholder: "Search", "aria-label": "Search" %>
+          </div>
+        </form>
+    </div>
+  </nav>
+</header>
