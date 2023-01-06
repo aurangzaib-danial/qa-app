@@ -8,24 +8,40 @@
       <%= link_to "QA", root_path, class: "navbar-brand order-2" %>
 
       <ul class="navbar-nav ms-auto order-3 main-nav-links">
-
         <% if user_signed_in? %>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+          <li class="nav-item dropdown notifications-dropdown me-2" data-controller="notifications">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-action="notifications#markAsRead">
+              <i class="bi bi-bell-fill"></i> 
+            </a>
+            <ul class="dropdown-menu position-absolute dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div id="recentNotifications">              
+              </div>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">  
+            <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="rounded-initial"><%= current_user.name_initial %></span>
             </a>
 
             <ul class="dropdown-menu position-absolute dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Asked questions", "#", class: "dropdown-item" %>
+              <%= link_to "Followed questions", "#", class: "dropdown-item" %>
+
+              <%= link_to "Settings", "#", class: "dropdown-item" %>
               <li><hr class="dropdown-divider"></li>
               <li><%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-link dropdown-item" %></li>
             </ul>
           </li>
 
         <% else %>
-          <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %></li>
+          <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %></li>
         <% end %>
       </ul>
+
 
       <div class="collapse navbar-collapse order-4 mt-3" id="navbarSupportedContent">
         <form class="flex-grow-1">

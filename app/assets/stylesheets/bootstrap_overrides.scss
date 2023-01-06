@@ -13,6 +13,10 @@
   color: black;
 }
 
+.dropdown-toggle::after {
+  color: var(--bs-nav-link-color);
+}
+
 .form-select {
   -webkit-appearance: none;
   -moz-appearance: none;
