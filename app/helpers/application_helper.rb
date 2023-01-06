@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def title(text, home: false)
-    text += ' - QA' unless home
+  def title(text)
+    text += ' - QA'
     content_for :title, text
   end
 
