@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root "main#index"
 
-
   devise_for(
     :users, 
     path_names: { sign_in: "login", sign_out: "logout", sign_up: "signup"},
@@ -11,4 +10,9 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
   )
+
+  get "/questions/ask", to: "questions#ask", as: "ask_question"
+  resources :questions, except: [:new, :show] do
+
+  end
 end

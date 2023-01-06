@@ -5,7 +5,7 @@
     <h1 class="fs-3 fw-normal"><%= params[:tab] == "most-votes" ? "Most Votes" : "Recent Questions" %></h1>  
 
     <div>
-      <%= link_to "Ask Question", "#", class: "btn btn-primary"%> 
+      <%= link_to "Ask Question", ask_question_path, class: "btn btn-primary"%> 
     </div>
   </div>
 </main>
