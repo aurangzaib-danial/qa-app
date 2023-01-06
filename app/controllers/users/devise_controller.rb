@@ -5,7 +5,7 @@
 class Users::DeviseController < ApplicationController
   class Responder < ActionController::Responder
     def to_turbo_stream
-     controller.render(options.merge(formats: :html))
+      controller.render(options.merge(formats: :html))
     rescue ActionView::MissingTemplate => error
       if get?
         raise error
@@ -15,8 +15,14 @@ class Users::DeviseController < ApplicationController
         redirect_to navigation_location
       end
     end
- end
-  
+  end
+
   self.responder = Responder
   respond_to :html, :turbo_stream
+
+  protected
+  
+  def prevent_flash
+    flash.delete(:notice)
+  end
 end

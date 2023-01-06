@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    flash.delete(:notice)
+    prevent_flash
   end
 
   # GET /resource/edit
