@@ -1,26 +1,38 @@
-<h2>Log in</h2>
+<% title "Log in" %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<main class="container mt-3 authentication">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <%# <%= facebook_button "Log in with Facebook" %1> %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, class: "form-control", required: true %>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex">
+        <%= f.label :password, class: "form-label me-auto" %>
+        <small>
+          <%= link_to "Forgot password?", new_user_password_path, class: "text-decoration-none" %>
+        </small>
+      </div>
+      <%= f.password_field :password, class: "form-control", required: true %>
+    </div>
+
+
+    <div class="mb-4 form-check">
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :remember_me, class: "form-check-label" %>
+    </div>
+
+    <div class="d-grid">
+      <%= f.button(class: "btn btn-primary") { button_content("Log in") } %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <p class="mt-4">Don't have an account? <%= link_to 'Sign up', new_user_registration_path, class: "text-decoration-none" %></p>
 
-<%= render "devise/shared/links" %>
+
+</main>
