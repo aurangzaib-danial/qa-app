@@ -1,29 +1,33 @@
-<h2>Sign up</h2>
+<% title "Sign Up" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<main class="container mt-3 authentication">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%# <%= facebook_button "Sign up with Facebook" %1> %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= form_for resource, as: resource_name, url: user_registration_path do |f| %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= field_with_errors(f, :text_field, :name) %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= field_with_errors(f, :email_field, :email) %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="mb-3">
+      <%= f.label :password, class: "form-label" %>
+      <%= field_with_errors(f, :password_field, :password) %>
+      <div id="userPasswordHelp" class="form-text">
+        Password must contain at least <%= @minimum_password_length %> characters.
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <%= f.button(class: "btn btn-primary") { button_content("Sign up") } %>
+    </div>
+  <% end %>  
+
+  <p class="mt-4">Already have an account? <%= link_to 'Log in', new_user_session_path, class: "text-decoration-none" %></p>
+</main>

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title(text, home: false)
-    text += ' - Discuss Stirling' unless home
+    text += ' - QA' unless home
     content_for :title, text
   end
 
