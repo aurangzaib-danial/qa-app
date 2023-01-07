@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="comments--edit"
 export default class extends Controller {
-  static targets = ["pencil", "form", "content", "body"]
+  static targets = ["pencil", "form", "content"]
 
   edit(event) {
     event.preventDefault()
