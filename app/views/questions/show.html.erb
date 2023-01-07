@@ -1,0 +1,43 @@
+<% title @question.title %>
+
+<main class="container custom-container mt-3">
+  <section id="question">
+    <h1 class="fs-4 fw-normal"><%= @question.title %></h1>
+    <p><%= @question.subject.title %></p>
+    <%# <%= render "votes/votes", question: @question %1> %>
+    <hr>
+    
+    <div>
+      <%= @question.body %>
+    </div>
+
+    <div class="text-end mt-5 small-text">
+
+      <%# <% if policy(@question).edit? %1> %>
+      <%#   <%= link_to 'Edit', edit_question_path(@question), class: "text-muted text-decoration-none me-2" %1> %>
+      <%# <% end %1> %>
+
+      <%# <%= follow_button @question %1><br> %>
+      
+      <%= question_info(@question) %>
+    </div>
+
+    <%# <%= render "comments/comments", commentable: @question %1> %>
+  </section>
+
+  <%# <section id="answers" class="mt-5"> %>
+  <%#   <h5 class="fw-normal"><span id="answersCount"><%= pluralize(@question.answers_count, 'Answer') %1></span></h5> %>
+  <%#   <%= render @question.answers %1> %>
+  <%# </section> %>
+
+  <%# <% if user_signed_in? %1> %>
+  <%#   <section id="newAnswer" class="mt-5"> %>
+  <%#     <h5 class="fw-normal">Your Answer</h5> %>
+  <%#     <%= render "answers/form", question: @question, answer: @question.answers.build, button_text: "Post your answer" %1> %>
+  <%#   </section> %>
+  <%# <% else %1> %>
+  <%#   <p class="mt-5">Please <%= link_to 'Log in', new_user_session_path, class: "text-decoration-none" %1> to submit an answer</p> %>
+  <%# <% end %1> %>
+
+</main>
+
