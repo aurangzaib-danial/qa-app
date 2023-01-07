@@ -1,0 +1,22 @@
+<div class="comments mt-5 small-text">
+
+  <%= content_tag :ul, id: "#{dom_id(commentable)}_comments" do %>
+    <% commentable.comments.order(:created_at).each do |comment| %>
+      <%= render comment, commentable: commentable %>
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= content_tag :div, data: {controller: "comments--new"} do %>
+
+      <%= render "comments/form", commentable: commentable %>
+
+      <a href="#" class="text-muted text-decoration-none" data-action="comments--new#newComment" data-comments--new-target="addComment">Add a comment</a>
+
+    <% end %>
+
+  <% else %>
+    <p>Please <%= link_to 'Log in', new_user_session_path, class: "text-decoration-none" %> to comment</p>
+  <% end %>
+</div>
+

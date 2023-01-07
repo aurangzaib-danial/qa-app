@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
   validates :name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
- 
+
   has_many :questions, inverse_of: "questioner"
+  has_many :comments, inverse_of: "commentator"
+
   def name_initial
     name[0].capitalize
   end
@@ -18,5 +20,9 @@ class User < ApplicationRecord
     end
     user.update(name: auth.info.name) # always update user's name, they might have changed it on Facebook
     user
+  end
+
+  def first_name
+    name.split.first
   end
 end
