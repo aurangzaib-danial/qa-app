@@ -3,6 +3,10 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized, only: [:edit, :update, :destroy]
 
+  def index
+    @questions = current_user.questions.page(params[:page])
+  end 
+
   def ask
     @question = Question.new
   end
