@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized, only: [:edit, :update, :destroy]
 
   def ask
     @question = Question.new
@@ -14,6 +15,25 @@ class QuestionsController < ApplicationController
     else
       render :ask, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    authorize @question
+  end
+
+  def update
+    authorize @question
+    if @question.update(question_params)
+      redirect_to slug_path(@question)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    authorize @question
+    @question.destroy
+    redirect_to root_path, notice: "Question deleted"
   end
 
   private

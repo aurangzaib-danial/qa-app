@@ -13,9 +13,9 @@
 
     <div class="text-end mt-5 small-text">
 
-      <%# <% if policy(@question).edit? %1> %>
-      <%#   <%= link_to 'Edit', edit_question_path(@question), class: "text-muted text-decoration-none me-2" %1> %>
-      <%# <% end %1> %>
+      <% if policy(@question).edit? %>
+        <%= link_to 'Edit', edit_question_path(@question), class: "text-muted text-decoration-none me-2" %>
+      <% end %>
 
       <%# <%= follow_button @question %1><br> %>
       
