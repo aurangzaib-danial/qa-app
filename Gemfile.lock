@@ -86,6 +86,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -108,6 +110,18 @@ GEM
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
     jwt (2.6.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -158,6 +172,8 @@ GEM
     pg (1.4.5)
     puma (5.6.5)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.5)
     rack-protection (3.0.5)
@@ -191,6 +207,12 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    ransack (3.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
+    record_tag_helper (1.0.1)
+      actionview (>= 5)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.0.1)
@@ -240,14 +262,19 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.8)
+  faker
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
+  kaminari (~> 1.2)
   omniauth-facebook
   omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit (~> 2.3)
   rails (~> 7.0.4)
+  ransack (~> 3.2)
+  record_tag_helper (~> 1.0)
   sprockets-rails
   stimulus-rails
   turbo-rails

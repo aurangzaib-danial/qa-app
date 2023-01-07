@@ -20,3 +20,20 @@ subject_titles = [
 ]
 
 subject_titles.each {|subject_title| Subject.create!(title: subject_title)}
+
+if Rails.env == "development"
+
+  subjects = Subject.all
+
+  users = [
+    User.create(email: "aurangzaib.danial@gmail.com", name: "Aurangzaib Khan", password: "123456"),
+    User.create(email: "ali@gmail.com", name: "Ali", password: "123456"),
+    User.create(email: "george@gmail.com", name: "George", password: "123456"),
+    User.create(email: "henry@gmail.com", name: "Henry", password: "123456"),
+  ]
+
+  100.times do
+    Question.create(title: Faker::Lorem.question(word_count: 10), questioner: users.sample, body: Faker::Lorem.paragraph_by_chars(number: 500), subject: subjects.sample)
+  end
+
+end
