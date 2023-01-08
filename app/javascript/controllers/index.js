@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import Answers__NewController from "./answers/new_controller.js"
+application.register("answers--new", Answers__NewController)
+
 import Comments__EditController from "./comments/edit_controller"
 application.register("comments--edit", Comments__EditController)
 

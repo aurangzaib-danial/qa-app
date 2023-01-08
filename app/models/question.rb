@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   belongs_to :subject
   has_many :votes
   has_many :comments, as: :commentable, dependent: :delete_all
+  has_many :answers
 
   has_rich_text :body
 

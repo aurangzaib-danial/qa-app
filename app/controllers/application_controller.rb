@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
    helper_method :slug_path
 
-   include Pundit
+   include Pundit::Authorization
 
    def slug_path(object, options = {})
     case object.class.name

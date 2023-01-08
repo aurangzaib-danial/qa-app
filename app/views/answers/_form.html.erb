@@ -1,0 +1,8 @@
+<%= form_with model: [question, answer], data: {controller: "answers--new", action: "answers--new#validations", turbo: false } do |form| %>
+  <div class="mt-3 mb-4">
+    <%= form.rich_text_area :body, class: "form-control", data: {answers__new_target: "body"} %>
+    <div class="invalid-feedback" data-answers--new-target="errorMessage"></div>
+  </div>
+  <%= form.submit button_text, class: "btn btn-primary" %>
+<% end %>
+
