@@ -28,7 +28,7 @@
             </a>
 
             <ul class="dropdown-menu position-absolute dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Asked questions", "#", class: "dropdown-item" %>
+              <%= link_to "Asked questions", questions_path, class: "dropdown-item" %>
               <%= link_to "Followed questions", "#", class: "dropdown-item" %>
 
               <%= link_to "Settings", "#", class: "dropdown-item" %>
@@ -42,14 +42,13 @@
         <% end %>
       </ul>
 
-
       <div class="collapse navbar-collapse order-4 mt-3" id="navbarSupportedContent">
-        <form class="flex-grow-1">
+        <%= search_form_for Question.ransack, url: "/search", class: "flex-grow-1" do |f| %>
           <div class="input-group">
             <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-            <%= search_field_tag :title, nil, class: "form-control", placeholder: "Search", "aria-label": "Search" %>
+            <%= f.search_field :title_cont, class: "form-control", placeholder: "Search", "aria-label": "Search", value: search_query %>
           </div>
-        </form>
+        <% end %>
       </div>
   </nav>
 </header>
