@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root "main#index"
   get "/search", to: "search#index"
   get "/followed", to: "follows#index"
+  get "/settings", to: "settings#show"
+  patch "/settings", to: "settings#update"
 
   devise_for(
     :users, 

@@ -27,7 +27,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #   current_user.destroy
+  #   redirect_to root_path, notice: "Your account has been deleted"
   # end
 
   # GET /resource/cancel
@@ -40,7 +41,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
