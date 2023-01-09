@@ -1,14 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
-import { get, patch } from '@rails/request.js'
+import { patch } from '@rails/request.js'
 
 // Connects to data-controller="notifications"
 export default class extends Controller {
-  static targets = ["unreadCount"]
-  
-  connect() {
-    this.startRefreshing()
-  }
+  static targets = ["unreadCount", "recent"]
   
   async markAsRead() {
     if (parseInt(this.unreadCountTarget.innerHTML) > 0) {
@@ -19,25 +15,9 @@ export default class extends Controller {
     }
   }
 
-  async load() {
-    await get("/notifications", {responseKind: "turbo-stream"})
-  }
-
-  startRefreshing() {
-    this.refreshTimer = setInterval(() => {
-      this.load()
-    }, 5000)
-  }
-
-  stopRefreshing() {
-    if (this.refreshTimer) {
-      clearInterval(this.refreshTimer)
-    }
-  }
-
-  disconnect() {
-    this.stopRefreshing()
+  markAsReadLocal() {
+    const unread_li = this.recentTarget.getElementsByClassName("unread")
+    Array.from(unread_li).forEach(li => li.classList.remove("unread"))
   }
 }
-
 

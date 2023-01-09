@@ -8,5 +8,9 @@ class Notification < ApplicationRecord
   scope :unread_count, -> { unread.count }
   scope :ordered_by_latest, -> { order(created_at: :desc)}
   scope :recent, -> { ordered_by_latest.limit(5) }
-end
 
+  after_create_commit do
+   broadcast_replace_to recipient, target: "recentNotifications", partial: "notifications/recent", locals: { notifications: recipient.notifications }
+   broadcast_replace_to recipient, target: "unreadNotificationsCount", partial: "notifications/unread_count", locals: { unread_count: recipient.notifications.unread_count }
+  end
+end

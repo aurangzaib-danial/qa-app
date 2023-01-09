@@ -10,6 +10,5 @@ consumer.subscriptions.create("NotificationsChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
   }
 });

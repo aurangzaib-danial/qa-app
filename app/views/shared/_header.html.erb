@@ -10,14 +10,15 @@
       <ul class="navbar-nav ms-auto order-3 main-nav-links">
         <% if user_signed_in? %>
 
+          <%= turbo_stream_from current_user %>
 
           <li class="nav-item dropdown notifications-dropdown me-2" data-controller="notifications">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-action="notifications#markAsRead">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-action="notifications#markAsRead hidden.bs.dropdown->notifications#markAsReadLocal">
               <i class="bi bi-bell-fill"></i>
-              <%= render "notifications/unread_count" %>
+              <%= render "notifications/unread_count", unread_count: current_user.notifications.unread_count %>
             </a>
             <ul class="dropdown-menu position-absolute dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <div id="recentNotifications">              
+              <div id="recentNotifications" data-notifications-target="recent">              
                 <%= render current_user.notifications.recent %>
               </div>
               <li class="text-center"><%= link_to "All Notifications", notifications_path, class: "text-muted text-decoration-none dropdown-item" %></li>
