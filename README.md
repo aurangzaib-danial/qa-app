@@ -1,8 +1,9 @@
 This is a Q&A web application similar to Stack overflow that I built as one of my portfolio projects.
 
-This application has been built with latest and greatest tools that come with Rails 7. The front-end makes use of Rails new approach for building modern web application i.e Hotwire.
+This application has been built with latest and greatest tools that come with Rails 7. The front-end makes use of Rails new approach for building modern web applications i.e Hotwire.
 
 ## Video Walk-through
+<iframe width="560" height="315" src="https://www.youtube.com/embed/72m6syG2vxI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Features
 - Users can surprise surprise ask questions and receive answers to their questions.
