@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     
     if @answer.save
-      # @question.notify_followers except: current_user, actionable: @answer
+      @question.notify_followers except: current_user, actionable: @answer
       redirect_to slug_path(@question, anchor: dom_id(@answer))
     else
       redirect_to slug_path(@question), alert: "Body for answer is missing"

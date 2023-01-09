@@ -15,3 +15,6 @@ application.register("comments--new", Comments__NewController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import NotificationsController from "./notifications_controller.js"
+application.register("notifications", NotificationsController)

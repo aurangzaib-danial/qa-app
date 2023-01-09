@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :follows
   root "main#index"
   get "/search", to: "search#index"
   get "/followed", to: "follows#index"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_030835) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_041237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_030835) do
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "recipient_id", null: false
+    t.bigint "actor_id", null: false
+    t.datetime "read_at"
+    t.string "action"
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.string "actionable_type", null: false
+    t.bigint "actionable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actionable_type", "actionable_id"], name: "index_notifications_on_actionable"
+    t.index ["actor_id"], name: "index_notifications_on_actor_id"
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "user_id", null: false
@@ -131,6 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_030835) do
   add_foreign_key "answers", "users", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "follows", "users", on_delete: :cascade
+  add_foreign_key "notifications", "users", column: "actor_id", on_delete: :cascade
+  add_foreign_key "notifications", "users", column: "recipient_id", on_delete: :cascade
   add_foreign_key "questions", "subjects", on_delete: :cascade
   add_foreign_key "questions", "users", on_delete: :cascade
   add_foreign_key "votes", "questions", on_delete: :cascade
