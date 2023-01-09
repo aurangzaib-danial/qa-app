@@ -1,24 +1,50 @@
-# README
+This is a Q&A web application similar to Stack overflow that I built as one of my portfolio projects.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application has been built with latest and greatest tools that come with Rails 7. The front-end makes use of Rails new approach for building modern web application i.e Hotwire.
 
-Things you may want to cover:
+## Video Walk-through
 
-* Ruby version
+## Features
+- Users can surprise surprise ask questions and receive answers to their questions.
+- Apart from normal authentication, users can also use Facebook login.
+- A question can be posted under a specific subject.
+- Questions and answers bodies can be formatted with various style options and images can also be added. All of this is powered using ActionText.
+- Users can vote on questions.
+- Users can add comments to questions and answers.
+- Users can search for specific questions.
+- Information can be scoped for almost everything e.g. displaying questions for a specific subject.
+- Real-time notifications e.g. a user will be notified if they receive an answer to their question while they are using the website. This functionaliy is powered through **ActionCable**.
+- The entire application is responsive and works great on modern devices.
 
-* System dependencies
+## Development Setup
+Make sure you have postgresql, vips and imagemagick installed.
 
-* Configuration
+For using the Facebook login, please add your api_key and api_secret to rails credentials.
 
-* Database creation
+Run the following command for setting up the database and some initial test data.
 
-* Database initialization
+```
+rails db:create && rails db:schema:load && rails db:seed
+```
 
-* How to run the test suite
+Install node packages
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+yarn install
+```
 
-* Deployment instructions
+Start up javascript bundling with esbuild
 
-* ...
+```
+./bin/dev
+```
+
+Start up the rails server and have a look around!
+
+```
+rails server
+```
+
+## License
+This project is released under the MIT License.
+
