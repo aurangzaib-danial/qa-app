@@ -4,6 +4,8 @@ class Question < ApplicationRecord
   has_many :votes
   has_many :comments, as: :commentable, dependent: :delete_all
   has_many :answers
+  has_many :follows, as: :followable, dependent: :delete_all
+  has_many :followers, through: :follows, source: :user
 
   has_rich_text :body
 
@@ -12,6 +14,11 @@ class Question < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
   scope :most_votes, -> { order(votes_count: :desc)}
+
+  after_create do
+    # questioner automatically follows their new question
+    follows.create(user: questioner)
+  end
 
   def slug
     title.parameterize
@@ -23,5 +30,9 @@ class Question < ApplicationRecord
 
   def user_vote(user)
     votes.find_by(user: user)
+  end
+
+  def following?(user)
+    follows.exists?(user: user)
   end
 end

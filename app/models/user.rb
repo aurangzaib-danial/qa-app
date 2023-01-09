@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :questions, inverse_of: "questioner"
   has_many :comments, inverse_of: "commentator"
+  has_many :follows
+  has_many :followed_questions, through: :follows, source: :followable, source_type: "Question"
 
   def name_initial
     name[0].capitalize

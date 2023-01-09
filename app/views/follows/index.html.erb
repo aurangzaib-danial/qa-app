@@ -1,0 +1,21 @@
+<%= title "Followed questions" %>
+
+<main class="container custom-container mt-4">
+  <div class="d-flex justify-content-between">
+    <h1 class="fs-3 fw-normal">Followed Questions</h1>  
+    <div>
+      <%= link_to "Ask Question", ask_question_path, class: "btn btn-primary"%> 
+    </div>
+  </div>
+
+  <div>
+    <% if @questions.empty? %>
+      <p class="mt-3">You have are not following any question</p>
+    <% else %>
+      <%= render "questions/questions", questions: @questions %>
+    <% end %>
+  </div>
+
+  <%= render "shared/paginate", questions: @questions  %>
+</main>
+

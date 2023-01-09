@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follows
   root "main#index"
   get "/search", to: "search#index"
   get "/followed", to: "follows#index"
@@ -28,11 +29,9 @@ Rails.application.routes.draw do
   get "/questions/:id/:slug", to: "questions#show", as: "question_slug"
   get "/subjects/:id/:slug", to: "subjects#show", as: :subject_slug
 
-  resources :answers, only: [] do
-    scope module: :answers do
-      resources :comments, only: [:create, :update, :destroy]
-      resources :follows, only: [:create, :destroy]
-    end
+  scope module: :answers, path: "answers/:answer_id", as: :answer do
+    resources :comments, only: [:create, :update, :destroy]
+    resources :follows, only: [:create, :destroy]
   end
 
   resources :notifications, only: :index do

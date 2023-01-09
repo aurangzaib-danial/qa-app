@@ -7,7 +7,7 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <%= content_tag :div, data: {controller: "comments--new"} do %>
+    <%= content_tag :div, data: {controller: "comments--new", comments__new_followable_id_value: follow_id(commentable)}  do %>
 
       <%= render "comments/form", commentable: commentable %>
 
