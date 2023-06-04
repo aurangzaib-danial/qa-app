@@ -6,12 +6,12 @@ import { patch } from '@rails/request.js'
 export default class extends Controller {
   static targets = ["unreadCount", "recent"]
   
-  async markAsRead() {
+  markAsRead() {
     if (parseInt(this.unreadCountTarget.innerHTML) > 0) {
       this.unreadCountTarget.innerHTML = "0"
       this.unreadCountTarget.classList.add("d-none")
       
-      await patch("/notifications/mark_as_read")
+      patch("/notifications/mark_as_read")
     }
   }
 
