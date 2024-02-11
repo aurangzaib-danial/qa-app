@@ -2,9 +2,6 @@ This is a Q&A web application similar to Stack Overflow that I built as one of m
 
 This application has been built with latest and greatest tools that come with Rails 7. The front-end makes use of Rails new approach for building modern web applications i.e Hotwire.
 
-## Video Walk-through
-https://www.youtube.com/watch?v=72m6syG2vxI
-
 ## Features
 - Users can surprise surprise ask questions and receive answers to their questions.
 - Apart from normal authentication, users can also use Facebook login.
