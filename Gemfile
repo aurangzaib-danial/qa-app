@@ -61,12 +61,7 @@ group :development do
   gem "rails-erd"
 end
 
-
 gem "devise", "~> 4.8"
-gem "omniauth-facebook" 
-gem "omniauth-rails_csrf_protection"
-
-
 gem "pundit", "~> 2.3"
 gem "record_tag_helper", "~> 1.0"
 gem "kaminari", "~> 1.2"
