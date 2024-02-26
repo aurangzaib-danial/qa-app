@@ -15,7 +15,7 @@ This application has been built with latest and greatest tools that come with Ra
 - The entire application is responsive and works great on modern devices.
 
 ## Development Setup
-Make sure you have **postgresql**, **vips** and **imagemagick** installed.
+Make sure you have **postgresql**, and **imagemagick** installed.
 
 For using the Facebook login, please add your **api_key** and **api_secret** to the rails credentials.
 
@@ -45,4 +45,3 @@ rails server
 
 ## License
 This project is released under the MIT License.
-
