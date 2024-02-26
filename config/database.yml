@@ -81,4 +81,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: qa_app_production
+  username: qa_app
+  password: <%= ENV["QA_APP_DATABASE_PASSWORD"] %>
