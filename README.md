@@ -3,10 +3,9 @@ This is a Q&A web application similar to Stack Overflow that I built as one of m
 This application has been built with latest and greatest tools that come with Rails 7. The front-end makes use of Rails new approach for building modern web applications i.e Hotwire.
 
 ## Features
-- Users can surprise surprise ask questions and receive answers to their questions.
-- Apart from normal authentication, users can also use Facebook login.
+- Users can ask questions and receive answers to their questions.
 - A question can be posted under a specific subject.
-- Questions and answers bodies can be formatted with various style options and images can also be added. All of this is powered using **ActionText**.
+- Questions and answers bodies can be formatted with various style options. This is powered with **ActionText**.
 - Users can vote on questions.
 - Users can add comments to questions and answers.
 - Users can search for specific questions.
@@ -15,9 +14,7 @@ This application has been built with latest and greatest tools that come with Ra
 - The entire application is responsive and works great on modern devices.
 
 ## Development Setup
-Make sure you have **postgresql**, and **imagemagick** installed.
-
-For using the Facebook login, please add your **api_key** and **api_secret** to the rails credentials.
+Make sure you have **postgresql** installed for database.
 
 Run the following command for setting up the database and some initial test data.
 
